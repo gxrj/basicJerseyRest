@@ -38,4 +38,9 @@ public class OcorrenciaDao {
         q.setParameter("u", user);
         return q.getResultList();
     }
+    
+    public List<Ocorrencia> getTodasOcorrencias(){
+        Query q = em .createQuery("select o from Ocorrencia");
+        return q.getResultList();
+    }
 }
