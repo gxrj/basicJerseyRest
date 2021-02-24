@@ -18,11 +18,18 @@ import javax.ws.rs.core.MediaType;
 public class OcorrenciasResource{ 
         
         public OcorrenciaDao daoOcorrencia = new OcorrenciaDao(); 
-
+        
         @GET
-        @Path("all")
         public List<Ocorrencia> listOcorrencias(){
-            return daoOcorrencia.getTodasOcorrencias();
+            try{
+                return daoOcorrencia.getTodasOcorrencias();
+            }
+            catch(Exception e){
+                System.out.println(e.getMessage());
+                return null;
+            }
+                
         }
+        
     
 }
