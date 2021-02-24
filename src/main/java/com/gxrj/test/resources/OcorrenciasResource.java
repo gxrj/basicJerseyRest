@@ -3,8 +3,6 @@ package com.gxrj.test.resources;
 
 import com.gxrj.test.dao.OcorrenciaDao;
 import com.gxrj.test.model.Ocorrencia;
-import java.security.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -22,6 +20,7 @@ public class OcorrenciasResource{
         public OcorrenciaDao daoOcorrencia = new OcorrenciaDao(); 
 
         @GET
+        @Path("all")
         public List<Ocorrencia> listOcorrencias(){
             return daoOcorrencia.getTodasOcorrencias();
         }
