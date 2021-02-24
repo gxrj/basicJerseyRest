@@ -1,11 +1,13 @@
 package com.gxrj.test.model;
 
 import java.io.Serializable;
+import java.security.Timestamp;
 import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -15,6 +17,11 @@ public class Ocorrencia implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    private String protocolo;
+    
+    @ManyToOne
+    private Usuario autor;
+    private Timestamp dtPostagem;
 
     public UUID getId() {
         return id;
@@ -23,6 +30,32 @@ public class Ocorrencia implements Serializable {
     public void setId(UUID id) {
         this.id = id;
     }
+
+    public String getProtocolo() {
+        return protocolo;
+    }
+
+    public void setProtocolo(String protocolo) {
+        this.protocolo = protocolo;
+    }
+
+    public Usuario getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Usuario autor) {
+        this.autor = autor;
+    }
+
+    public Timestamp getDtPostagem() {
+        return dtPostagem;
+    }
+
+    public void setDtPostagem(Timestamp dtPostagem) {
+        this.dtPostagem = dtPostagem;
+    }
+    
+    
 
     @Override
     public int hashCode() {
