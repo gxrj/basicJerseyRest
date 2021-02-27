@@ -2,12 +2,14 @@ package com.gxrj.test.model;
 
 import java.io.Serializable;
 import java.security.Timestamp;
+import java.util.List;
 import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -22,6 +24,10 @@ public class Ocorrencia implements Serializable {
     @ManyToOne
     private Usuario autor;
     private Timestamp dtPostagem;
+    private String descricao;
+    @OneToMany(mappedBy="ocorrencia")
+    private List<Atendimento> atendientos;
+    
 
     public UUID getId() {
         return id;
@@ -54,7 +60,22 @@ public class Ocorrencia implements Serializable {
     public void setDtPostagem(Timestamp dtPostagem) {
         this.dtPostagem = dtPostagem;
     }
-    
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public List<Atendimento> getAtendientos() {
+        return atendientos;
+    }
+
+    public void setAtendientos(List<Atendimento> atendientos) {
+        this.atendientos = atendientos;
+    }
     
 
     @Override
