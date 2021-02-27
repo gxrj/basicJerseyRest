@@ -1,11 +1,13 @@
 package com.gxrj.test.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Secretaria implements Serializable {
@@ -14,6 +16,9 @@ public class Secretaria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    private String nome;
+    @OneToMany(mappedBy="secretaria")
+    private List<CategoriaServico> listaServicos;
 
     public UUID getId() {
         return id;
@@ -21,6 +26,22 @@ public class Secretaria implements Serializable {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public List<CategoriaServico> getListaServicos() {
+        return listaServicos;
+    }
+
+    public void setListaServicos(List<CategoriaServico> listaServicos) {
+        this.listaServicos = listaServicos;
     }
 
     @Override

@@ -15,7 +15,7 @@ public class Atendimento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private UUID protocolo;
     @ManyToOne
     private Ocorrencia ocorrencia;
     @ManyToOne
@@ -23,12 +23,12 @@ public class Atendimento implements Serializable {
     private String descricao;
     private Timestamp dtExecucao;
     
-    public UUID getId() {
-        return id;
+    public UUID getProtocolo() {
+        return protocolo;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setProtocolo(UUID protocolo) {
+        this.protocolo = protocolo;
     }
 
     public Ocorrencia getOcorrencia() {
@@ -67,18 +67,18 @@ public class Atendimento implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (protocolo != null ? protocolo.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // TODO: Warning - this method won't work in the case the protocolo fields are not set
         if (!(object instanceof Atendimento)) {
             return false;
         }
         Atendimento other = (Atendimento) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.protocolo == null && other.protocolo != null) || (this.protocolo != null && !this.protocolo.equals(other.protocolo))) {
             return false;
         }
         return true;
@@ -86,7 +86,7 @@ public class Atendimento implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gxrj.test.model.Atendimento[ id=" + id + " ]";
+        return "com.gxrj.test.model.Atendimento[ id=" + protocolo + " ]";
     }
     
 }

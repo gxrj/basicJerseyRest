@@ -1,5 +1,6 @@
 package com.gxrj.test.model;
 
+import com.gxrj.test.enums.Status;
 import java.io.Serializable;
 import java.security.Timestamp;
 import java.util.List;
@@ -20,15 +21,18 @@ public class Ocorrencia implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String protocolo;
-    
+    private Endereco endereco;
     @ManyToOne
     private Usuario autor;
     private Timestamp dtPostagem;
     private String descricao;
     @OneToMany(mappedBy="ocorrencia")
-    private List<Atendimento> atendientos;
+    private List<Atendimento> atendimentos;
+    private List<byte[]> imagens;
+    @ManyToOne
+    private Servico servico;
+    private Status status;
     
-
     public UUID getId() {
         return id;
     }
@@ -69,14 +73,45 @@ public class Ocorrencia implements Serializable {
         this.descricao = descricao;
     }
 
-    public List<Atendimento> getAtendientos() {
-        return atendientos;
+    public List<Atendimento> getAtendimentos() {
+        return atendimentos;
     }
 
-    public void setAtendientos(List<Atendimento> atendientos) {
-        this.atendientos = atendientos;
+    public void setAtendimentos(List<Atendimento> atendimentos) {
+        this.atendimentos = atendimentos;
     }
-    
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public List<byte[]> getImagens() {
+        return imagens;
+    }
+
+    public void setImagens(List<byte[]> imagens) {
+        this.imagens = imagens;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     @Override
     public int hashCode() {
