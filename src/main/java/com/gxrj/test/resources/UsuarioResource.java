@@ -20,15 +20,22 @@ public class UsuarioResource {
     UsuarioDao daoUser;
     
     @POST
-    @PathParam("{cfp}/{email}/{nome}")
-    public Response cadastrar(@PathParam("cpf") String cpf, @PathParam("email") String email, @PathParam("nome") String nome){ 
-        Usuario user = new Usuario();
-        user.setCpf(cpf);
-        user.setEmail(email);
-        user.setNome(nome);
-       daoUser.inserir(user);
-       
-       return Response.status(201).entity("Usuario criado").build();
+    @Path("/{cfp}/{email}/{nome}")
+    public Response cadastrar(@PathParam("cpf") String cpf,
+                              @PathParam("nome") String nome,
+                              @PathParam("email") String email){ 
+        try{
+            Usuario user = new Usuario();
+            user.setCpf(cpf);
+            user.setEmail(email);
+            user.setNome(nome);
+            daoUser.inserir(user);
+
+            return Response.status(201).entity("Usuario criado").build();
+        }
+        catch(Exception e){
+            return Response.status(500).entity(e.getMessage()).build();
+        }
     }
     
 }
