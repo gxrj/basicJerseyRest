@@ -9,6 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("user")
 @Produces(MediaType.APPLICATION_JSON)
@@ -20,8 +21,14 @@ public class UsuarioResource {
     
     @POST
     @PathParam("{cfp}/{email}/{nome}")
-    public void cadastrar(Usuario user){   
+    public Response cadastrar(@PathParam("cpf") String cpf, @PathParam("email") String email, @PathParam("nome") String nome){ 
+        Usuario user = new Usuario();
+        user.setCpf(cpf);
+        user.setEmail(email);
+        user.setNome(nome);
        daoUser.inserir(user);
+       
+       return Response.status(201).entity("Usuario criado").build();
     }
     
 }
