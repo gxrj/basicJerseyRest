@@ -2,9 +2,11 @@
 package com.gxrj.test.dao;
 
 import com.gxrj.test.model.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Stateless
 public class UsuarioDao {
@@ -24,4 +26,8 @@ public class UsuarioDao {
         em.remove(em.merge(u));
     }
     
+    public List<Usuario> listarUsuarios(){
+        Query q = em.createQuery("select u from Usuario u");
+        return q.getResultList();
+    }
 }

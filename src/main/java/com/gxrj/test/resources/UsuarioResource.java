@@ -2,8 +2,11 @@ package com.gxrj.test.resources;
 
 import com.gxrj.test.dao.UsuarioDao;
 import com.gxrj.test.model.Usuario;
+import java.util.List;
+import java.util.UUID;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -26,6 +29,7 @@ public class UsuarioResource {
                               @PathParam("email") String email){ 
         try{
             Usuario user = new Usuario();
+            user.setId(UUID.randomUUID());
             user.setCpf(cpf);
             user.setEmail(email);
             user.setNome(nome);
@@ -36,6 +40,11 @@ public class UsuarioResource {
         catch(Exception e){
             return Response.status(500).entity(e.getMessage()).build();
         }
+    }
+    
+    @GET
+    public List<Usuario> listarUsuarios(){
+        return daoUser.listarUsuarios();
     }
     
 }

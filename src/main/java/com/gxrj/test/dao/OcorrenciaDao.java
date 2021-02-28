@@ -40,7 +40,7 @@ public class OcorrenciaDao {
     }
     
     public List<Ocorrencia> getTodasOcorrencias(){
-        Query q = em .createQuery("select o from Ocorrencia where o is not null");
+        Query q = em .createQuery("select o from Ocorrencia o where o is not null");
         return q.getResultList();
     }
 }
