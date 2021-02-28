@@ -1,4 +1,3 @@
-
 package com.gxrj.test.resources;
 
 import com.gxrj.test.dao.OcorrenciaDao;
@@ -9,10 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-/**
- *
- * @author Souza
- */
+
 @Path("ocorrencias")
 @Produces(MediaType.APPLICATION_JSON)
 public class OcorrenciasResource{ 

@@ -12,39 +12,62 @@ public class Endereco implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String cep;
+    private String tipo, logradouro, bairro, referencia;
+    private int numero;
+    
 
-    public Long getId() {
-        return id;
+    public String getCep() {
+        return cep;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public String getTipo() {
+        return tipo;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Endereco)) {
-            return false;
-        }
-        Endereco other = (Endereco) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
     @Override
     public String toString() {
-        return "com.gxrj.test.model.Endereco[ id=" + id + " ]";
+        return "com.gxrj.test.model.Endereco[ id=" + cep + " ]";
     }
     
 }

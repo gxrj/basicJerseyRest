@@ -21,6 +21,7 @@ public class Ocorrencia implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String protocolo;
+    @ManyToOne
     private Endereco endereco;
     @ManyToOne
     private Usuario autor;

@@ -13,5 +13,6 @@ public class AppConf extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources){
         resources.add(com.gxrj.test.resources.HelloWorld.class);
         resources.add(com.gxrj.test.resources.OcorrenciasResource.class);
+        resources.add(com.gxrj.test.resources.UsuarioResource.class);
     }
 }
